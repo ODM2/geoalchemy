@@ -5,8 +5,9 @@ python:
 
 services:
   - postgres
-  - mysql
+#  - mysql
 addons:
+  mariadb: '10.1'
   apt:
     packages:
       - cmake
