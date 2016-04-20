@@ -33,7 +33,7 @@ env:
 install:
   - echo "[mysqld]" > $HOME/.my.cnf
   - echo "default-storage-engine = MYISAM" >> $HOME/.my.cnf
-  - sudo sudo service mysql start
+  - sudo sudo service mysql restart
   # install GeoAlchemy in editable mode
   - pip install -e .
 
