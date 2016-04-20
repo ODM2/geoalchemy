@@ -7,7 +7,7 @@ services:
   - postgres
   - mysql
 addons:
-  mariadb: '10.1'
+#  mariadb: '10.1'
   apt:
     packages:
       - cmake
@@ -33,7 +33,9 @@ env:
 install:
   - echo "[mysqld]" > $HOME/.my.cnf
   - echo "storage_engine = MYISAM" >> $HOME/.my.cnf
-  - sudo sed -i '/\[mysqld\]/a default_storage_engine  = MYISAM ' /etc/mysql/my.cnf
+  - echo "default_storage_engine = MYISAM" >> $HOME/.my.cnf
+  - sudo sed -i '/\[mysqld\]/a default_storage_engine = MYISAM ' /etc/mysql/my.cnf
+  - sudo sed -i '/\[mysqld\]/a storage_engine = MYISAM ' /etc/mysql/my.cnf
   - cat /etc/mysql/my.cnf
   - sudo service mysql restart
   # install GeoAlchemy in editable mode
