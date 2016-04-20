@@ -32,10 +32,10 @@ env:
 
 install:
   - echo "[mysqld]" > $HOME/.my.cnf
-  - echo "storage_engine = MYISAM" >> $HOME/.my.cnf
-  - echo "default_storage_engine = MYISAM" >> $HOME/.my.cnf
-  - sudo sed -i '/\[mysqld\]/a default_storage_engine = MYISAM ' /etc/mysql/my.cnf
-  - sudo sed -i '/\[mysqld\]/a storage_engine = MYISAM ' /etc/mysql/my.cnf
+  - echo "storage_engine = MyISAM" >> $HOME/.my.cnf
+  - echo "default_storage_engine = MyISAM" >> $HOME/.my.cnf
+  - sudo sed -i '/\[mysqld\]/a default_storage_engine = MyISAM ' /etc/mysql/my.cnf
+  - sudo sed -i '/\[mysqld\]/a storage_engine = MyISAM ' /etc/mysql/my.cnf
   - cat /etc/mysql/my.cnf
   - sudo service mysql restart
   # install GeoAlchemy in editable mode
