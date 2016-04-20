@@ -1,6 +1,10 @@
 from sqlalchemy.orm.properties import ColumnProperty
 from sqlalchemy.sql import expression, not_
 from sqlalchemy.sql.expression import ColumnClause, literal
+try:
+    from sqlalchemy.sql.functions import Function
+except ImportError:
+    from sqlalchemy.sql.expression import Function  # sqlalchemy < 0.9
 from sqlalchemy.types import UserDefinedType
 from sqlalchemy.ext.compiler import compiles
 
