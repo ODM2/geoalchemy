@@ -317,7 +317,7 @@ class TestGeometry(TestCase):
         spots_within = session.query(Spot).filter(Spot.spot_location.within(l.lake_geom)).all()
         ok_(session.scalar(p1.spot_location.within(l.lake_geom)))
         ok_(not session.scalar(p2.spot_location.within(l.lake_geom)))
-        ok_(p1 in spots_within, mesg="count:"+list.count(spots_within))
+        ok_(p1 in spots_within, mesg=spots_within)
         ok_(p2 not in spots_within)
         envelope_geom = DBSpatialElement(session.scalar(l.lake_geom.envelope))
         spots_within = session.query(Spot).filter(l.lake_geom.within(envelope_geom)).all()
