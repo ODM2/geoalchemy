@@ -35,6 +35,7 @@ install:
 #  - echo "storage_engine = MyISAM" >> $HOME/.my.cnf
 #  - echo "default_storage_engine = MyISAM" >> $HOME/.my.cnf
   - sudo sed -i '/\[mysqld\]/a default_storage_engine = MyISAM ' /etc/mysql/my.cnf
+  - sudo sed -i '/\[mysqld\]/a lower_case_table_names = 1 ' /etc/mysql/my.cnf
 #  - sudo sed -i '/\[mysqld\]/a storage_engine = MyISAM ' /etc/mysql/my.cnf
   - cat /etc/mysql/my.cnf
   - sudo service mysql restart
