@@ -26,10 +26,10 @@ class SpatialElement(object):
     
     def __getattr__(self, name):
         attr = getattr(functions, name)
-         if callable(attr):
-             return attr(self)
-         else:
-             return attr
+        if callable(attr):
+            return attr(self)
+        else:
+            return attr
 #
     def __get_wkt(self, session):
         """This method converts the object into a WKT geometry. It takes into
