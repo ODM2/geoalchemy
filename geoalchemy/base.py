@@ -247,7 +247,7 @@ class RawColumn(ColumnClause):
 def __compile_rawcolumn(rawcolumn, compiler, **kw):
     return compiler.visit_column(rawcolumn.column)
 
-class SpatialComparator(UserDefinedType.Comparator):
+class SpatialComparator(ColumnProperty.Comparator):
     """Intercepts standard Column operators on mapped class attributes
         and overrides their behavior.
         
