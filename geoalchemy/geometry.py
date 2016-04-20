@@ -186,10 +186,11 @@ def GeometryColumn(*args, **kw):
     
     """
     if kw.has_key("comparator"):
-        comparator = kw.pop("comparator")
+        #comparator = kw.pop("comparator")
+        comparator_factory = kw.pop("comparator")
     else:
-        comparator = SpatialComparator
-    
+        #comparator = SpatialComparator
+        comparator_factory = SpatialComparator
     if isinstance(args[0], GeometryExtensionColumn):
         # if used for non-declarative, use the column of the table definition
         column = args[0]
@@ -201,6 +202,7 @@ def GeometryColumn(*args, **kw):
     return column_property(
         column, 
         extension=SpatialAttribute(), 
-        comparator_factory=comparator
+        #comparator_factory=comparator
+        comparator_factory = comparator_factory
     )
 
