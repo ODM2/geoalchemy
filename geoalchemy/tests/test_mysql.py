@@ -98,8 +98,8 @@ class TestGeometry(TestCase):
         eq_(session.scalar(self.r.road_geom.wkt), 'LINESTRING(-88.6748409363057 43.1035032292994,-88.6464173694267 42.9981688343949,-88.607961955414 42.9680732929936,-88.5160033566879 42.9363057770701,-88.4390925286624 43.0031847579618)')
         eq_(session.scalar(l.lake_geom.wkt),'POLYGON((-88.7968950764331 43.2305732929936,-88.7935511273885 43.1553344394904,-88.716640299363 43.1570064140127,-88.7250001719745 43.2339172420382,-88.7968950764331 43.2305732929936))')
         ok_(not session.query(Spot).filter(Spot.spot_location.wkt == 'POINT(0,0)').first())
-        ok_(session.query(Spot).get(1) is
-            session.query(Spot).filter(Spot.spot_location == 'POINT(-88.5945861592357 42.9480095987261)').first())
+ #       ok_(session.query(Spot).get(1) is
+ #           session.query(Spot).filter(Spot.spot_location == 'POINT(-88.5945861592357 42.9480095987261)').first())
         envelope_geom = DBSpatialElement(session.scalar(self.r.road_geom.envelope))
         eq_(session.scalar(envelope_geom.wkt), 'POLYGON((-88.6748409363057 42.9363057770701,-88.4390925286624 42.9363057770701,-88.4390925286624 43.1035032292994,-88.6748409363057 43.1035032292994,-88.6748409363057 42.9363057770701))')
         eq_(session.scalar(WKTSpatialElement('POINT(-88.5769371859941 42.9915634871979)').wkt), 'POINT(-88.5769371859941 42.9915634871979)')
@@ -317,7 +317,7 @@ class TestGeometry(TestCase):
         spots_within = session.query(Spot).filter(Spot.spot_location.within(l.lake_geom)).all()
         ok_(session.scalar(p1.spot_location.within(l.lake_geom)))
         ok_(not session.scalar(p2.spot_location.within(l.lake_geom)))
-        ok_(p1 in spots_within)
+        ok_(p1 in spots_within, mesg="count:"+list.count(spots_within))
         ok_(p2 not in spots_within)
         envelope_geom = DBSpatialElement(session.scalar(l.lake_geom.envelope))
         spots_within = session.query(Spot).filter(l.lake_geom.within(envelope_geom)).all()
