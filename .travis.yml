@@ -1,5 +1,5 @@
 language: python
-
+sudo: required
 python:
   - "2.7"
 
@@ -31,6 +31,9 @@ env:
   - DB=mysql
 
 install:
+  - echo "[mysqld]" > $HOME/.my.cnf
+  - echo "default-storage-engine = MYISAM" >> $HOME/.my.cnf
+  - sudo sudo service mysql start
   # install GeoAlchemy in editable mode
   - pip install -e .
 
