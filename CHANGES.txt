@@ -1,5 +1,10 @@
 GeoAlchemy Change Log
 =====================
+0.7.3 ODM
+-----
+
+* custom version for Observation Data Model
+* Updated for SQLAlchemy 1.0
 
 0.7.2
 -----
