@@ -3,9 +3,17 @@ from sqlalchemy.sql import expression, not_
 from sqlalchemy.sql.expression import ColumnClause, literal
 from sqlalchemy.types import UserDefinedType
 from sqlalchemy.ext.compiler import compiles
+import six
 
-from utils import from_wkt
-from functions import functions, _get_function, BaseFunction
+if six.PY3:
+    from .utils import from_wkt
+    from .functions import functions, _get_function, BaseFunction
+    buffer = memoryview
+    ColumnComparator = ColumnProperty.Comparator
+else:
+    from utils import from_wkt
+    from functions import functions, _get_function, BaseFunction
+    ColumnComparator = ColumnProperty.ColumnComparator
 
 # Base classes for geoalchemy
 
