@@ -13,7 +13,7 @@ if six.PY3:
 else:
     from utils import from_wkt
     from functions import functions, _get_function, BaseFunction
-    ColumnComparator = ColumnProperty.ColumnComparator
+    ColumnComparator = ColumnProperty.Comparator
 
 # Base classes for geoalchemy
 
